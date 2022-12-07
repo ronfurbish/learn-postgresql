@@ -4,8 +4,8 @@ Basic Docker Compose file that will provide a postgresql instance along with a w
 
 ## How to connect with pgAdmin 4 (via web)
 
-1. docker compose up -d
-2. open browser to localhost:8080
+1. Run this command: ``` docker compose up -d ```
+2. open browser to ``` localhost:8080 ```
     - username: admin@linuxhint.com
     - password: secret
 3. Add Server
@@ -19,7 +19,7 @@ Basic Docker Compose file that will provide a postgresql instance along with a w
     
 ## How to connect with pgAdmin 4 (local install)
 
-1. docker compose up -d db
+1. Run this command: ``` docker compose up -d db ```
 2. Open pgAdmin4 from your local machine
     - usually you'll sign in with your master password
 3. Add Server
