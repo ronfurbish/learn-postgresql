@@ -1,20 +1,15 @@
 version: "3.7"
 services:
- db:
-   image: postgres:13.7
-   restart: always
-   environment:
-     POSTGRES_DB: postgres
-     POSTGRES_USER: admin
-     POSTGRES_PASSWORD: admin
-     PGDATA: /var/lib/postgresql/data
-   volumes:
-    - db-data:/var/lib/postgresql/data
-   ports:
-    - "15432:5432"
- 
- pgadmin:
+  grafana:
+    image: grafana/grafana
+    container_name: grafana
+    restart: always
+    ports:
+      - 3000:3000
+  
+  pgadmin:
    image: dpage/pgadmin4:latest
+   container_name: pgadmin
    restart: always
    environment:
      PGADMIN_DEFAULT_EMAIL: admin@linuxhint.com
@@ -24,9 +19,41 @@ services:
     - "8080:80"
    volumes:
     - pgadmin-data:/var/lib/pgadmin
-   links:
-    - "db:pgsql-server"
+
+  postgres:
+   image: postgres:latest
+   restart: always
+   container_name: postgres
+   environment:
+     POSTGRES_DB: postgres
+     POSTGRES_USER: admin
+     POSTGRES_PASSWORD: admin
+     PGDATA: /var/lib/postgresql/data
+   volumes:
+    - postgres-data:/var/lib/postgresql/data
+   ports:
+    - "15432:5432"
+
+  postgres-exporter:
+    image: quay.io/prometheuscommunity/postgres-exporter
+    container_name: postgres-exporter
+    restart: always
+    ports:
+      - "9187:9187"
+    environment:
+      DATA_SOURCE_NAME: "postgresql://admin:admin@postgres:5432/postgres?sslmode=disable"
+
+  prometheus:
+    image: prom/prometheus
+    container_name: prometheus
+    restart: always
+    ports:
+      - "9090:9090"
+    volumes:
+      - ./prometheus.yml:/etc/prometheus/prometheus.yml:ro
+
+
 
 volumes:
-  db-data:
+  postgres-data:
   pgadmin-data:
