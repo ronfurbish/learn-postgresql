@@ -62,7 +62,7 @@ Notes:  I used this [tutorial](https://dev.to/nelsoncode/how-to-monitor-posgresq
             - You will need to set the `Data Source` to Prometheus data source you just created
     - You should see a populated grafana dashboard!
 
-## Here's some resources to help learn Postgres:
+## Here's some resources to help learn Postgres
 
 https://www.crunchydata.com/developers/tutorials -> Great for getting your feet wet!
 
