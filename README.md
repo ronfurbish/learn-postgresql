@@ -39,7 +39,7 @@ Notes:  I used this [tutorial](https://dev.to/nelsoncode/how-to-monitor-posgresq
 
 1. Spin up all services using this docker command ``` docker compose up -d ```
 2. You can verify Postgres-exporter is working by running this command in terminal or powershell: ``` curl http://localhost:9187/metrics ``` 
-    - You should see an output like this as you scroll down.  The key is finding the pair of "postgres:5432"
+    - You should see an output like this as you scroll down.  The key is finding the pair of `postgres:5432`
     ``` 
     TYPE pg_database_size_bytes gauge
     pg_database_size_bytes{datname="postgres",server="postgres:5432"} 7.631663e+06
@@ -52,7 +52,7 @@ Notes:  I used this [tutorial](https://dev.to/nelsoncode/how-to-monitor-posgresq
     - Login with 
         - user: admin
         - password: admin
-        - you will be prompted to change the password, but for testing purposes you can just "change it" to admin (LOL)
+        - you will be prompted to change the password, but for testing purposes you can just `change it` to admin (LOL)
     - You will want to add a Data Source 
         - Choose Prometheus
         - update url to ``` http://prometheus:9090 ```
