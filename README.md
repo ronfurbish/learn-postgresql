@@ -38,7 +38,7 @@ I have tested this using [Docker](https://docker.com) and [Podman Desktop](https
 Notes:  I used this [tutorial](https://dev.to/nelsoncode/how-to-monitor-posgresql-with-prometheus-and-grafana-docker-24c8) to help enchance this project.  Lifted most of it and will over time add enchancements so that the dashboard in grafana is there by default.
 
 1. Spin up all services using this docker command ``` docker compose up -d ```
-2. You can verify Postgres-exporter is working by running this command in terminal or powershell: ``` curl http://localhost:9187/metrics ``` 
+2. You can verify [Postgres-exporter](https://github.com/prometheus-community/postgres_exporter) is working by running this command in terminal or powershell: ``` curl http://localhost:9187/metrics ``` 
     - You should see an output like this as you scroll down.  The key is finding the pair of "postgres:5432"
     ``` 
     TYPE pg_database_size_bytes gauge
@@ -56,7 +56,7 @@ Notes:  I used this [tutorial](https://dev.to/nelsoncode/how-to-monitor-posgresq
     - You will want to add a Data Source 
         - Choose Prometheus
         - update url to ``` http://prometheus:9090 ```
-        - Click `Sve & test` button
+        - Click `Save & test` button
     - Go to `Dasboards` and choose `+import`
         - Where it says `Import via grafana.com` type ``` 9628 ``` and click `Load`
             - You will need to set the `Data Source` to Prometheus data source you just created
